@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets_app/screens/home.dart';
+import 'package:flutter_widgets_app/config/theme/app_theme.dart';
+import 'package:flutter_widgets_app/presentation/screens/home.dart';
 
 ///Metodo main, donde todo inicia
 void main() {
@@ -20,18 +21,9 @@ class MyApp extends StatelessWidget {
       ///Quitamos el banner feo
       debugShowCheckedModeBanner: false,
 
-      ///Theme
-      darkTheme: ThemeData.dark(),
-
       ///ThemeData
-      theme: ThemeData(
-        ///Material y color base
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 230, 18, 18),
-        ),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      theme: AppTheme(selectedColor: 2).getTheme(),
+      home: const MyHomePage(title: 'WidgetsApp'),
     );
   }
 }
