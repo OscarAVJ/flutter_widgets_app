@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets_app/config/menuItems/menu_items.dart';
+import 'package:go_router/go_router.dart';
 
 ///Widget que se llama en el main
 class MyHomePage extends StatefulWidget {
@@ -212,7 +213,7 @@ class _CustomListTile extends StatelessWidget {
         // Navigator.of(
         //   context,
         // ).push(MaterialPageRoute(builder: (context) => ButtonsScreen()));
-        Navigator.pushNamed(context, menuItem.url);
+        context.push(menuItem.url);
       },
     );
   }
