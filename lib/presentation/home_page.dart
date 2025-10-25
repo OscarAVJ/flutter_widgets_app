@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 ///Widget que se llama en el main
 class MyHomePage extends StatefulWidget {
   ///Constructor, pide el titulo de la app
+  static const String name = 'home_screen';
   const MyHomePage({super.key, required this.title});
 
   final String title;

@@ -8,10 +8,19 @@ final router = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(
+      name: MyHomePage.name,
       path: '/',
       builder: (context, state) => MyHomePage(title: 'WidgetsApp'),
     ),
-    GoRoute(path: '/buttons', builder: (context, state) => ButtonsScreen()),
-    GoRoute(path: '/cards', builder: (context, state) => CardsScreen()),
+    GoRoute(
+      name: ButtonsScreen.name,
+      path: '/buttons',
+      builder: (context, state) => ButtonsScreen(),
+    ),
+    GoRoute(
+      name: CardsScreen.name,
+      path: '/cards',
+      builder: (context, state) => CardsScreen(),
+    ),
   ],
 );
