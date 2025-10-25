@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets_app/config/theme/app_theme.dart';
-import 'package:flutter_widgets_app/presentation/screens/home.dart';
+import 'package:flutter_widgets_app/presentation/home_page.dart';
 
 ///Metodo main, donde todo inicia
 void main() {
