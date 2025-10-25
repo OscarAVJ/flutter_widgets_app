@@ -15,6 +15,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   ///Valor del contador
   final int _counter = 0;
+
   ///Valor del selectedIndex para el bottomNavigationBar
   int _selectedIndex = 0;
 
@@ -22,13 +23,13 @@ class _MyHomePageState extends State<MyHomePage> {
   // ignore: unused_field
   late final List<Widget> _menuItems;
 
-
   ///Metodo que se ejecuta al iniciar el widget o su estado inicial
   @override
   void initState() {
     super.initState();
+
     ///Menu Items tendra 2 huevos indices el 0 sera el counterScreen y el otro el hello de kz
-    _menuItems = [_CounterScreen(counter: _counter), _KarbonZeroHello()];
+    _menuItems = [_CounterScreen(counter: _counter), _WidgetMenu()];
   }
 
   ///Aca definimos el metodo que se va a ejecutar al darle tap a un item del BNB
@@ -59,20 +60,24 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
+
       ///Body, el cual sera en base a los menuItems pero el selectedIndex, en caso sea 0 o 1
       body: _menuItems.elementAt(_selectedIndex),
+
       ///Definimos el BNV
       bottomNavigationBar: BottomNavigationBar(
         ///Aca van los items, es un array de Widgets y pues tienen un BNBItem, label es required
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Início"),
           BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            label: "Categorias",
+            icon: Icon(Icons.menu_outlined),
+            label: "Menu",
           ),
         ],
+
         ///Current Index le indica al bottom navigation bar a cual hacer el enfasis o el zoom
         currentIndex: _selectedIndex,
+
         ///On tap es la funcion que se ejecutara al darle tap
         onTap: _onItemTapped,
       ),
@@ -163,14 +168,14 @@ class _CounterScreenState extends State<_CounterScreen> {
   }
 }
 
-class _KarbonZeroHello extends StatefulWidget {
-  const _KarbonZeroHello();
+class _WidgetMenu extends StatefulWidget {
+  const _WidgetMenu();
 
   @override
-  State<_KarbonZeroHello> createState() => __KarbonZeroHelloState();
+  State<_WidgetMenu> createState() => _WidgetMenuState();
 }
 
-class __KarbonZeroHelloState extends State<_KarbonZeroHello> {
+class _WidgetMenuState extends State<_WidgetMenu> {
   @override
   Widget build(BuildContext context) {
     return Placeholder();
