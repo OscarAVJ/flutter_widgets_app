@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets_app/config/theme/app_theme.dart';
 import 'package:flutter_widgets_app/presentation/home_page.dart';
+import 'package:flutter_widgets_app/presentation/screens/buttons_screen.dart';
+import 'package:flutter_widgets_app/presentation/screens/cards_screen.dart';
 
 ///Metodo main, donde todo inicia
 void main() {
@@ -24,6 +26,10 @@ class MyApp extends StatelessWidget {
       ///ThemeData
       theme: AppTheme(selectedColor: 2).getTheme(),
       home: const MyHomePage(title: 'WidgetsApp'),
+      routes: {
+        '/buttons': (context) => ButtonsScreen(),
+        '/cards': (context) => CardsScreen(),
+      },
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets_app/config/menuItems/menu_items.dart';
+import 'package:flutter_widgets_app/presentation/screens/buttons_screen.dart';
 
 ///Widget que se llama en el main
 class MyHomePage extends StatefulWidget {
@@ -208,7 +209,12 @@ class _CustomListTile extends StatelessWidget {
         Icons.keyboard_arrow_right_outlined,
         color: colors.primary,
       ),
-      onTap: () {},
+      onTap: () {
+        // Navigator.of(
+        //   context,
+        // ).push(MaterialPageRoute(builder: (context) => ButtonsScreen()));
+        Navigator.pushNamed(context, menuItem.url);
+      },
     );
   }
 }
