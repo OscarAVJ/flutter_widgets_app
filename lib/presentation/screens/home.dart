@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets_app/config/menuItems/menu_items.dart';
 
 ///Widget que se llama en el main
 class MyHomePage extends StatefulWidget {
@@ -178,6 +179,36 @@ class _WidgetMenu extends StatefulWidget {
 class _WidgetMenuState extends State<_WidgetMenu> {
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return ListView.builder(
+      physics: BouncingScrollPhysics(),
+      itemCount: menuList.length,
+      itemBuilder: (context, index) {
+        MenuItems menuItem = menuList[index];
+        return _CustomListTile(menuItem: menuItem);
+      },
+    );
+  }
+}
+
+class _CustomListTile extends StatelessWidget {
+  const _CustomListTile({required this.menuItem});
+
+  final MenuItems menuItem;
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
+    return ListTile(
+      hoverColor: colors.primary,
+      leading: menuItem.icon,
+      iconColor: colors.primary,
+      title: Text(menuItem.title),
+      subtitle: Text(menuItem.subTitle),
+      trailing: Icon(
+        Icons.keyboard_arrow_right_outlined,
+        color: colors.primary,
+      ),
+      onTap: () {},
+    );
   }
 }
