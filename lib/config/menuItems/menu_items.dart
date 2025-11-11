@@ -28,9 +28,39 @@ const menuList = <MenuItems>[
     icon: Icon(Icons.cases_rounded),
   ),
   MenuItems(
-    title: '????',
-    subTitle: 'Todos los ????',
-    url: 'Url',
-    icon: Icon(Icons.device_unknown),
+    title: 'Animaciones',
+    subTitle: 'Todos las animaciones',
+    url: '/animations',
+    icon: Icon(Icons.animation),
+  ),
+  MenuItems(
+    title: 'Tutorial',
+    subTitle: 'Todos los tutoriales',
+    url: '/tutorial',
+    icon: Icon(Icons.scatter_plot),
+  ),
+  MenuItems(
+    title: 'Scroll',
+    subTitle: 'Todos los scroll',
+    url: '/scroll',
+    icon: Icon(Icons.screen_rotation_alt_outlined),
+  ),
+  MenuItems(
+    title: 'Progreso',
+    subTitle: 'Todos los progresos',
+    url: '/progress',
+    icon: Icon(Icons.replay_circle_filled_sharp),
+  ),
+  MenuItems(
+    title: 'Snackbars',
+    subTitle: 'Todos los snackbars',
+    url: '/snackbars',
+    icon: Icon(Icons.branding_watermark_rounded),
+  ),
+  MenuItems(
+    title: 'Ui',
+    subTitle: 'Todos los controles',
+    url: '/uicontrols',
+    icon: Icon(Icons.interests),
   ),
 ];

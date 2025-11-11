@@ -121,51 +121,55 @@ class _CounterScreenState extends State<_CounterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '${widget._counter}',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text('You have pushed the button this many times:'),
+              Text(
+                '${widget._counter}',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ],
+          ),
         ),
       ),
 
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: () {
-              if (widget._counter >= 0) {
-                _incrementCounter();
-              } else {
-                return;
-              }
-            },
-            tooltip: 'Increment',
-            child: const Icon(Icons.exposure_plus_1),
-          ),
-          SizedBox(height: 20),
-          FloatingActionButton(
-            onPressed: () {
-              if (widget._counter == 0) {
-                return;
-              } else {
-                _decreaseCounter();
-              }
-            },
-            tooltip: 'Increment',
-            child: const Icon(Icons.exposure_minus_1),
-          ),
-          SizedBox(height: 20),
-          FloatingActionButton(
-            onPressed: _resetCounter,
-            tooltip: "Reset",
-            child: Icon(Icons.restart_alt_outlined),
-          ),
-        ],
+      floatingActionButton: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FloatingActionButton(
+              onPressed: () {
+                if (widget._counter >= 0) {
+                  _incrementCounter();
+                } else {
+                  return;
+                }
+              },
+              tooltip: 'Increment',
+              child: const Icon(Icons.exposure_plus_1),
+            ),
+            SizedBox(height: 20),
+            FloatingActionButton(
+              onPressed: () {
+                if (widget._counter == 0) {
+                  return;
+                } else {
+                  _decreaseCounter();
+                }
+              },
+              tooltip: 'Decrease',
+              child: const Icon(Icons.exposure_minus_1),
+            ),
+            SizedBox(height: 20),
+            FloatingActionButton(
+              onPressed: _resetCounter,
+              tooltip: "Reset",
+              child: Icon(Icons.restart_alt_outlined),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -201,7 +205,6 @@ class _CustomListTile extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     return ListTile(
-      hoverColor: colors.primary,
       leading: menuItem.icon,
       iconColor: colors.primary,
       title: Text(menuItem.title),
