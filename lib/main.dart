@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       ///ThemeData
-      theme: AppTheme(selectedColor: 2).getTheme(),
+      theme: AppTheme(selectedColor: 0).getTheme(),
 
       routerConfig: router,
     );
