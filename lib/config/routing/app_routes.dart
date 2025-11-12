@@ -11,7 +11,7 @@ final router = GoRouter(
     GoRoute(
       name: MyHomePage.name,
       path: '/',
-      builder: (context, state) => MyHomePage(title: 'WidgetsApp'),
+      builder: (context, state) => MyHomePage(title: 'Karbon Zero App'),
     ),
     GoRoute(
       name: ButtonsScreen.name,
@@ -20,9 +20,14 @@ final router = GoRouter(
         return CustomTransitionPage(
           child: ButtonsScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: CurveTween(
-                curve: Curves.easeInCirc).animate(animation),
+            return SlideTransition(
+              position:
+                  Tween<Offset>(
+                    begin: const Offset(1, 0),
+                    end: Offset.zero,
+                  ).animate(
+                    CurveTween(curve: Curves.easeInOutCubic).animate(animation),
+                  ),
               child: child,
             );
           },
