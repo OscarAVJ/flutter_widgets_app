@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_widgets_app/presentation/home_page.dart';
 import 'package:flutter_widgets_app/presentation/screens/screens.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +16,18 @@ final router = GoRouter(
     GoRoute(
       name: ButtonsScreen.name,
       path: '/buttons',
-      builder: (context, state) => ButtonsScreen(),
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          child: ButtonsScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: CurveTween(
+                curve: Curves.easeInCirc).animate(animation),
+              child: child,
+            );
+          },
+        );
+      },
     ),
     GoRoute(
       name: CardsScreen.name,
@@ -24,7 +36,9 @@ final router = GoRouter(
     ),
     GoRoute(
       name: AnimatedScreen.name,
-      path: '/animations', builder: (context, state) => AnimatedScreen()),
+      path: '/animations',
+      builder: (context, state) => AnimatedScreen(),
+    ),
     GoRoute(
       path: '/tutorial',
       builder: (context, state) => AppTutorialScreen(),
