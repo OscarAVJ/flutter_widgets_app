@@ -13,7 +13,7 @@ class UiControlsScreen extends StatelessWidget {
 }
 
 class _UiConrolsView extends StatefulWidget {
-  const _UiConrolsView({super.key});
+  const _UiConrolsView();
 
   @override
   State<_UiConrolsView> createState() => _UiConrolsViewState();
@@ -23,11 +23,13 @@ class _UiConrolsView extends StatefulWidget {
 enum Transportation { car, plane, boat, submarine }
 
 class _UiConrolsViewState extends State<_UiConrolsView> {
+  final Set<String> selectedList = {};
   bool isDeveloper = true;
   Transportation? selectedTransport;
   bool wantsBreakfas = false;
   bool wantsLunch = false;
   bool wantsDinner = false;
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -69,6 +71,12 @@ class _UiConrolsViewState extends State<_UiConrolsView> {
           value: wantsBreakfas,
           onChanged: (value) => setState(() {
             wantsBreakfas = !wantsBreakfas;
+            selectedList.add('Breakfast');
+            if (!wantsBreakfas) {
+              selectedList.removeWhere(
+                (element) => element.startsWith('Breakfast'),
+              );
+            }
           }),
         ),
         CheckboxListTile(
@@ -77,6 +85,12 @@ class _UiConrolsViewState extends State<_UiConrolsView> {
           value: wantsDinner,
           onChanged: (value) => setState(() {
             wantsDinner = !wantsDinner;
+            selectedList.add('Dinner');
+            if (!wantsDinner) {
+              selectedList.removeWhere(
+                (element) => element.startsWith('Dinner'),
+              );
+            }
           }),
         ),
         CheckboxListTile(
@@ -85,7 +99,20 @@ class _UiConrolsViewState extends State<_UiConrolsView> {
           value: wantsLunch,
           onChanged: (value) => setState(() {
             wantsLunch = !wantsLunch;
+            selectedList.add('Lunch');
+            if (!wantsLunch) {
+              selectedList.removeWhere(
+                (element) => element.startsWith('Lunch'),
+              );
+            }
           }),
+        ),
+        Row(
+          children: [
+            ...selectedList.map((chip) {
+              return Chips(title: chip);
+            }),
+          ],
         ),
       ],
     );
@@ -116,6 +143,22 @@ class _RadioList extends StatelessWidget {
           leading: Radio(value: Transportation.submarine),
         ),
       ],
+    );
+  }
+}
+
+class Chips extends StatelessWidget {
+  String title;
+  Chips({super.key, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Chip(
+      avatar: CircleAvatar(
+        backgroundColor: Colors.grey.shade800,
+        child: const Text('AB'),
+      ),
+      label: Text(title),
     );
   }
 }
