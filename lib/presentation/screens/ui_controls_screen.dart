@@ -32,6 +32,8 @@ class _UiConrolsViewState extends State<_UiConrolsView> {
 
   @override
   Widget build(BuildContext context) {
+    final items = selectedList.toList();
+
     return ListView(
       physics: ClampingScrollPhysics(),
       children: [
@@ -56,6 +58,7 @@ class _UiConrolsViewState extends State<_UiConrolsView> {
           onChanged: (Transportation? value) {
             setState(() {
               selectedTransport = value;
+              selectedList.add(selectedTransport.toString());
             });
           },
           groupValue: selectedTransport,
@@ -107,12 +110,20 @@ class _UiConrolsViewState extends State<_UiConrolsView> {
             }
           }),
         ),
-        Row(
-          children: [
-            ...selectedList.map((chip) {
-              return Chips(title: chip);
-            }),
-          ],
+        SizedBox(
+          height: 100,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: selectedList.length,
+            itemBuilder: (context, index) {
+              return Chips(title: items[index]);
+            },
+            // children: [
+            //   ...selectedList.map((chip) {
+            //     return Chips(title: chip);
+            //   }),
+            // ],
+          ),
         ),
       ],
     );
@@ -148,17 +159,20 @@ class _RadioList extends StatelessWidget {
 }
 
 class Chips extends StatelessWidget {
-  String title;
-  Chips({super.key, required this.title});
+  final String title;
+  const Chips({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      avatar: CircleAvatar(
-        backgroundColor: Colors.grey.shade800,
-        child: const Text('AB'),
+    return Padding(
+      padding: const EdgeInsets.only(right: 5),
+      child: Chip(
+        avatar: CircleAvatar(
+          backgroundColor: Colors.grey.shade800,
+          child: const Text('AB'),
+        ),
+        label: Text(title),
       ),
-      label: Text(title),
     );
   }
 }
