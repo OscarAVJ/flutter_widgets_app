@@ -63,4 +63,10 @@ const menuList = <MenuItems>[
     url: '/uicontrols',
     icon: Icon(Icons.interests),
   ),
+  MenuItems(
+    title: 'Ordenar comida',
+    subTitle: 'Restaurante ',
+    url: '/ordenar',
+    icon: Icon(Icons.food_bank),
+  ),
 ];
