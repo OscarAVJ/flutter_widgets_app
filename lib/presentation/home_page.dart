@@ -102,53 +102,56 @@ class _CounterScreenState extends State<_CounterScreen> {
     final colors = Theme.of(context).colorScheme;
 
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(height: 10),
-          _CO2Counter(colors: colors),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                Text("Tipos de consumos", style: textDecoration),
-                const Spacer(),
-                TextButton(
-                  onPressed: () => context.push('/cards'),
-                  child: Text("Ver mas", style: textDecoration),
-                ),
-              ],
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            _CO2Counter(colors: colors),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: [
+                  Text("Tipos de consumos", style: textDecoration),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () => context.push('/cards'),
+                    child: Text("Ver mas", style: textDecoration),
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 60,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              children: const [CardImage(), CardImage(), CardImage()],
+            SizedBox(
+              height: 60,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                children: const [CardImage(), CardImage(), CardImage()],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                Text("Canales", style: textDecoration),
-                const Spacer(),
-                TextButton(
-                  onPressed: () => context.push('/buttons'),
-                  child: Text("Ver mas", style: textDecoration),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: [
+                  Text("Canales", style: textDecoration),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () => context.push('/buttons'),
+                    child: Text("Ver mas", style: textDecoration),
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 60,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [_MiniCard(icon: Icons.abc, label: 'kjk')],
+            SizedBox(
+              height: 60,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [_MiniCard(icon: Icons.abc, label: 'kjk')],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
