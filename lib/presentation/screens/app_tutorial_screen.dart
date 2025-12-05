@@ -33,11 +33,25 @@ class AppTutorialScreen extends StatefulWidget {
 class _AppTutorialScreenState extends State<AppTutorialScreen> {
   final PageController pageViewController = PageController();
   bool hasEnd = false;
+  late int pointer = 0;
   @override
   void initState() {
     super.initState();
     pageViewController.addListener(() {
       final page = pageViewController.page ?? 0;
+      if (page >= 0.9 && page <= 1.8) {
+        setState(() {
+          pointer = 1;
+        });
+      } else if (page >= 1.9 && page <= 9) {
+        setState(() {
+          pointer = 2;
+        });
+      } else if (page >= 0 && page <= 0.8) {
+        setState(() {
+          pointer = 0;
+        });
+      }
       if (page >= 1.5) {
         setState(() {
           hasEnd = true;
@@ -55,6 +69,7 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.sizeOf(context).height;
+    double screenWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -67,15 +82,48 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
               ...slides.map((element) => SlidesPages(slides: element)),
             ],
           ),
+          Positioned(
+            left: screenWidth * 0.25,
+            top: screenHeight * 0.75,
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    pageViewController.jumpToPage(0);
+                  },
+                  icon: Icon(
+                    Icons.circle,
+                    color: pointer == 0 ? Colors.green : Colors.black,
+                    size: 20,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    pageViewController.jumpToPage(1);
+                  },
+                  icon: Icon(
+                    Icons.circle,
+                    color: pointer == 1 ? Colors.green : Colors.black,
+                    size: 20,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    pageViewController.jumpToPage(2);
+                  },
+                  icon: Icon(
+                    Icons.circle,
+                    color: pointer == 2 ? Colors.green : Colors.black,
+                    size: 20,
+                  ),
+                ),
+              ],
+            ),
+          ),
           Align(
             alignment: AlignmentGeometry.topRight,
             child: IconButton(onPressed: context.pop, icon: Icon(Icons.close)),
           ),
-          // if ((pageViewController.page ?? 0) >= 1)
-          //   TextButton(
-          //     onPressed: context.pop,
-          //     child: Text('Finalizar tutorial'),
-          //   ),
           hasEnd
               ? FadeInRight(
                   delay: Duration(seconds: 1),
