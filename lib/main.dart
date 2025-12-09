@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_widgets_app/config/routing/app_routes.dart';
 import 'package:flutter_widgets_app/config/theme/app_theme.dart';
+import 'package:flutter_widgets_app/presentation/providers/theme_provider.dart';
 
 ///Metodo main, donde todo inicia
 void main() {
-  runApp(const MyApp());
+  ///Riverpod
+  runApp(ProviderScope(child: MyApp()));
 }
 
 ///El corazon de nuestr app, el widget Padre
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDarkMode = ref.watch(isDarkModeProvider);
+
     ///Creacion de MaterialApp
     return MaterialApp.router(
       ///Titulo de la app
@@ -22,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       ///ThemeData
-      theme: AppTheme(selectedColor: 2).getTheme(),
+      theme: AppTheme(selectedColor: 2).getTheme(isDarkMode),
 
       routerConfig: router,
     );

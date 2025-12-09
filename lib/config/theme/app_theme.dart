@@ -19,9 +19,9 @@ class AppTheme {
         "El color seleccionado debe de ser menor a ${colorsList.length - 1}",
       );
 
-  ThemeData getTheme() {
+  ThemeData getTheme(bool isDarkMode) {
     return ThemeData(
-      brightness: Brightness.dark,
+      brightness: isDarkMode ? Brightness.dark : Brightness.light,
       useMaterial3: true,
       colorSchemeSeed: colorsList[selectedColor],
       appBarTheme: AppBarTheme(centerTitle: true),
