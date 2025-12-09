@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets_app/config/menuItems/menu_items.dart';
+import 'package:flutter_widgets_app/presentation/widgets/navigation_drawer.dart';
 import 'package:go_router/go_router.dart';
 
 ///Widget que se llama en el main
@@ -16,7 +17,7 @@ class MyHomePage extends StatefulWidget {
 
 ///Estado
 class _MyHomePageState extends State<MyHomePage> {
-  ///Valor del contador
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   ///Valor del selectedIndex para el bottomNavigationBar
   int _selectedIndex = 0;
@@ -47,18 +48,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     ///Estructura de Scaffols
     return Scaffold(
+      key: scaffoldKey,
+
       ///AppBar
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ClipRRect(
-            borderRadius: BorderRadiusGeometry.circular(20),
-            child: Image.network(
-              'https://res.cloudinary.com/dtxerr5sz/image/upload/v1760503417/boredParrot_evl0kr.png',
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
@@ -83,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ///On tap es la funcion que se ejecutara al darle tap
         onTap: _onItemTapped,
       ),
+      drawer: CustomNavigationDrawer(scaffoldKey: scaffoldKey),
     );
   }
 }

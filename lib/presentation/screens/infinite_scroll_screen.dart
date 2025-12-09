@@ -82,7 +82,6 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     isLoading = true;
     setState(() {});
     final lastId = imagesId.last;
-    print('Hola soy 2 $lastId');
     await Future.delayed(Duration(seconds: 3));
     isLoading = false;
     imagesId.clear();

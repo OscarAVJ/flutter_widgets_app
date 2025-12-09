@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_widgets_app/presentation/home_page.dart';
+import 'package:flutter_widgets_app/presentation/screens/counter_screen.dart';
 import 'package:flutter_widgets_app/presentation/screens/error_screen.dart';
 import 'package:flutter_widgets_app/presentation/screens/screens.dart';
 import 'package:go_router/go_router.dart';
@@ -60,6 +61,26 @@ final router = GoRouter(
     GoRoute(
       path: '/uicontrols',
       builder: (context, state) => UiControlsScreen(),
+    ),
+    GoRoute(
+      path: '/counter',
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          child: CounterScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return SlideTransition(
+              position:
+                  Tween<Offset>(
+                    begin: const Offset(1, 0),
+                    end: Offset.zero,
+                  ).animate(
+                    CurveTween(curve: Curves.easeInOutCubic).animate(animation),
+                  ),
+              child: child,
+            );
+          },
+        );
+      },
     ),
   ],
 );

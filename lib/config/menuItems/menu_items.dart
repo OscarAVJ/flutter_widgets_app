@@ -64,6 +64,12 @@ const menuList = <MenuItems>[
     icon: Icon(Icons.interests),
   ),
   MenuItems(
+    title: 'Counter',
+    subTitle: 'Contedor',
+    url: '/counter',
+    icon: Icon(Icons.punch_clock),
+  ),
+  MenuItems(
     title: 'Ordenar comida',
     subTitle: 'Restaurante ',
     url: '/ordenar',
