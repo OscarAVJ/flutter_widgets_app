@@ -54,6 +54,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.push('/themeScreen');
+            },
+            icon: Icon(Icons.color_lens),
+          ),
+        ],
       ),
 
       ///Body, el cual sera en base a los menuItems pero el selectedIndex, en caso sea 0 o 1

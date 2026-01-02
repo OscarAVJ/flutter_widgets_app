@@ -3,6 +3,7 @@ import 'package:flutter_widgets_app/presentation/home_page.dart';
 import 'package:flutter_widgets_app/presentation/screens/counter_screen.dart';
 import 'package:flutter_widgets_app/presentation/screens/error_screen.dart';
 import 'package:flutter_widgets_app/presentation/screens/screens.dart';
+import 'package:flutter_widgets_app/presentation/screens/theme_screen.dart';
 import 'package:go_router/go_router.dart';
 
 // GoRouter configuration
@@ -62,6 +63,7 @@ final router = GoRouter(
       path: '/uicontrols',
       builder: (context, state) => UiControlsScreen(),
     ),
+    GoRoute(path: '/themeScreen', builder: (context, state) => ThemeScreen()),
     GoRoute(
       path: '/counter',
       pageBuilder: (context, state) {
